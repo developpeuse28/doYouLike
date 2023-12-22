@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/signup.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+          integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+          crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+  <form action="/member/signup" method="post" onsubmit="return validateSignUpForm();">
+    <label for="memberId" class="form-label">ID:</label>
+    <input type="text" id="memberId" name="memberId" class="form-input" placeholder="Please enter your student ID" required onblur="idCheck()">
+    <p id="check-result"></p>
+
+    <label for="password" class="form-label">Password:</label>
+    <div class="password-input-container">
+      <input type="password" id="password" name="password" class="form-input" placeholder="Please enter your password">
+      <span class="password-toggle" onclick="togglePasswordVisibility(event)">
+        <i class="fas fa-eye" id="eye-icon"></i>
+      </span>
+    </div>
+    <div class="password-requirements">At least 8 characters; a combination of letters, numbers, and symbols</div> <br>
+
+    <label for="confirmPassword" class="form-label">Confirm Password:</label>
+    <div class="password-input-container">
+      <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" placeholder="Please confirm your password">
+      <span class="password-toggle" onclick="togglePasswordVisibility(event)">
+        <i class="fas fa-eye" id="cEye-icon"></i>
+      </span>
+    </div>
+
+    <label for="name" class="form-label">Name:</label>
+    <input type="text" id="name" name="name" class="form-input" placeholder="Please enter your name" required>
+
+    <label for="gender" class="form-label">Gender:</label>
+    <select id="gender" name="gender" class="form-select" required>
+      <option value="">Select Gender</option>
+      <option value="MALE">Male</option>
+      <option value="FEMALE">Female</option>
+    </select>
+
+    <label for="email" class="form-label">Email:</label>
+    <input type="email" id="email" name="email" class="form-input" placeholder="Please enter your email" required>
+
+    <label for="birthYear" class="form-label">Year of Birth:</label>
+    <input type="number" id="birthYear" name="birthYear" class="form-input" placeholder="Please enter your year of birth" min="1900" max="2023" step="1" value="2000" required>
+
+    <label for="major" class="form-label">Major:</label>
+    <select id="major" name="major" class="form-select" required>
+      <option value="">Select Major</option>
+      <option value="THEOLOGY">Theology</option>
+      <option value="ENGLISH_STUDIES">English Studies</option>
+      <option value="BUSINESS_ADMINISTRATION">Business Administration</option>
+      <option value="EARLY_CHILDHOOD_EDUCATION">Early Childhood Education</option>
+      <option value="GLOBAL_KOREAN_STUDIES">Global Korean Studies</option>
+      <option value="AVIATION_TOURISM_AND_FOREIGN_LANGUAGE">Aviation Tourism and Foreign Language</option>
+      <option value="PHYSICAL_THERAPY">Physical Therapy</option>
+      <option value="FOOD_AND_NUTRITION">Food and Nutrition</option>
+      <option value="SOCIAL_WELFARE">Social Welfare</option>
+      <option value="PUBLIC_HEALTH">Public Health</option>
+      <option value="COUNSELING_PSYCHOLOGY">Counseling Psychology</option>
+      <option value="LEISURE_AND_SPORTS_STUDIES">Leisure and Sports Studies</option>
+      <option value="PHARMACY">Pharmacy</option>
+      <option value="NURSING">Nursing</option>
+      <option value="CHEMISTRY_AND_LIFE_SCIENCE">Chemistry and Life Science</option>
+      <option value="ENVIRONMENTAL_DESIGN_AND_HORTICULTURE">Environmental Design and Horticulture</option>
+      <option value="ANIMAL_LIFE_RESOURCES">Animal Life Resources</option>
+      <option value="INTEGRATIVE_BIOTECHNOLOGY">Integrative Biotechnology</option>
+      <option value="COMPUTER_SCIENCE_AND_ENGINEERING">Computer Science and Engineering</option>
+      <option value="AI_INFORMATICS">AI Informatics</option>
+      <option value="ARCHITECTURE">Architecture</option>
+      <option value="MUSIC">Music</option>
+      <option value="ART_AND_DESIGN">Art and Design</option>
+      <option value="LIBERAL_ARTS">Liberal Arts</option>
+    </select>
+
+    <input type="submit" value="Sign Up" class="form-submit" id="signup-button">
+  </form>
+</div>
+</body>
+<script src="/js/script.js"></script>
+</html>

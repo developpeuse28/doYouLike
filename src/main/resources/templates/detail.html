@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link rel="stylesheet" href="/css/detail.css">
+  <link rel="stylesheet" href="/css/sendmessage.css">
+</head>
+<body>
+<nav class="navbar">
+  <ul class="navbar-list">
+    <li class="navbar-item"><a href="javascript:void(0);" class="navbar-link" onclick="goBack()">⬅️ Back</a></li>
+  </ul>
+</nav>
+<div class="profile-info">
+  <div class="profile-emoji">
+    <div class="profile-emoji" contenteditable="true" th:text="${member.status ?: '&#128512;'}">&#128512;</div> <br>
+  </div>
+
+  <p><strong>Name: <span th:text="${member.name}"></span></strong> </p>
+  <p><strong>ID: <span th:text="${member.memberId}"></span></strong> </p>
+  <p><strong>Age: <span th:text="${member.birthYear}"></span></strong></p>
+  <p><strong>Gender: <span th:text="${#strings.capitalize(member.gender.toLowerCase())}"></span></strong></p>
+  <p><strong>Major:
+    <span th:text="${#strings.capitalize(#strings.replace(member.major, '_', ' ').toLowerCase())}"></span>
+  </strong></p>
+  <br>
+
+  <label for="dormDepartment">Desired Dormitory Department:</label>
+  <span id="dormDepartment" th:text="${member.dormDepartment}"></span> <br>
+
+  <label for="roomType">Desired Type of Room:</label>
+  <span id="roomType" th:text="${member.roomType}"></span> <br>
+
+  <label>Lifestyle:</label>
+  <span th:text="${member.lifestyle1}"></span>
+  <span th:text="${member.lifestyle2}"></span>
+  <span th:text="${member.lifestyle3}"></span> <br>
+
+  <label>Sleep Habit:</label>
+  <span th:text="${member.sleepHabit1 == 'SLEEP_HABIT1_DONT_SNORE'} ? 'I don\'t snore' : ''"></span>
+  <span th:text="${member.sleepHabit2 == 'SLEEP_HABIT2_DONT_GRIND_TEETH'} ? 'I don\'t grind my teeth' : ''"></span>
+  <span th:text="${member.sleepHabit3 == 'SLEEP_HABIT3_DONT_SLEEP_TALK_OR_SLEEPWALK'} ? 'I don\'t sleep talk or sleepwalk' : ''"></span>
+  <br><br>
+
+  <label for="specialNote">Bio/Special Note:</label>
+  <span id="specialNote" th:text="${member.specialNote}"></span> <br>
+
+  <button class="send-message-button" ><a href="/message">Send Message</a></button>
+</div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

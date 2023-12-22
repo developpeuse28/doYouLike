@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DoYouLike</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="./style.css">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="https://d19m59y37dris4.cloudfront.net/varkala/1-2/img/favicon.png">
+</head>
+
+<body> 
+  <!--Top Appbar--> 
+  <div id="appbar" class="p-1">
+
+      <!-- 상단 바에 뒤로 가기 버튼 -->
+    <a href="index.html"><div id="backButton">🡰</div></a>
+    <a href="index.html"><img src="img/logo.png" alt="Logo" class="logo"> <label>모집글 작성</label></a>
+    
+   
+
+    
+
+    <!-- 드롭다운 버튼 -->
+    <!-- <div class="dropdown"> -->
+      <button id="navbartog" class="navbar-toggler toggler-normal icon-light focus-none border-none m-1">
+    <span id="navbartog" class="navbar-toggler-icon"></span></button>
+
+
+      
+      <div id="dropdown-menu" class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+        <!-- 드롭다운 바에 들어갈 내용을 추가하세요 -->
+        <!-- 예시: 로그인 폼 -->
+        <form class="px-4 py-3">
+          <div class="mb-3">
+            누구님 안녕하세요.
+            
+          </div>
+       
+          <a href="login.html"><button type="submit" class="btn btn-success">Log out</button></a>
+        </form>
+      </div>
+    </div> 
+  <!-- </div> -->
+
+  <div class="d-flex">
+    <!-- Test Content -->
+    <main id="main" class="">
+      <section class="p-0 p-lg-5">
+        <div class="container-fluid">
+          <!-- ... (기존 Test Content 내용) ... -->
+
+          <div class="input-area">
+            <input type="text" id="diaryTitle" placeholder="제목을 입력하세요">
+            <input type="date" id="diaryDate">
+          </div>
+
+          
+        
+              
+       <!-- 인풋 텍스트 박스 추가 -->
+      <textarea id="diaryInput" placeholder="세부 내용을 입력하세요."></textarea>
+
+      <!-- 표 시작 -->
+  <table>
+    <tr>
+      <th>기숙사</th>
+      <td><select class="custom-select" id="exampleSelect">
+        <option>에덴관</option>
+        <option>브니엘관</option>
+        <option>살렘관</option>
+        <option>시온관</option>
+      </select></td>
+    </tr>
+    <tr>
+      <th>희망인실</th>
+      <td><select class="custom-select" id="exampleSelect">
+        <option>1인실</option>
+        <option>2인실</option>
+        <option>3인실</option>
+        <option>4인실</option>
+      </select></td>
+    </tr>
+    <tr>
+      <th>희망학과</th>
+      <td><select class="custom-select" id="exampleSelect">
+        <option>상관없음</option>
+        <option>컴퓨터공학부</option>
+        <option>인공지능융합학과</option>
+        <option>유아교육과</option>
+      </select></td>
+    </tr>
+    <tr>
+      <th>또래 선호</th>
+      <td> <input type="text" id="inputtxt" placeholder="나이를 입력해주세요."></td>
+    </tr>
+    <tr>
+      <th>코콜이</th>
+      <td><select class="custom-select" id="exampleSelect">
+        <option>유</option>
+        <option>무</option>
+      </select></td>
+    </tr>
+  </table>
+  <!-- 표 종료 -->
+
+ 
+    <!-- 프로필 사진과 닉네임 -->
+    <div class="profile-container">
+      <img class="profile-picture" src="data:image/jpeg;base64,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">
+      <div class="profile-label">구데타마</div>
+      <div class="additional-info">구데타마님 안녕하세요.</div>
+   
+
+    <button class="btnmsg">저장하기</button>
+  </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 외부 스크립트 파일 -->
+  <script src="./script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

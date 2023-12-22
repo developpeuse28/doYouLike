@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.form-label {
+    display: block;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.password-requirements {
+    font-size: 14px;
+    color: #666;
+}
+
+.password-input-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #999;
+}
+
+.show-password {
+    color: #007bff;
+}
+
+.password-strength {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    display: none;
+}
+
+.password-strength.weak {
+    color: red;
+}
+
+.password-strength.strong {
+    color: green;
+}
+
+
+.form-submit {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.form-submit:hover {
+    background-color: #0056b3;
+}
+
+#check-result {
+    font-size: 14px;
+    color: #ff0000;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+.form-submit[disabled] {
+    background-color: #ccc;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .form-label {
+        font-size: 16px;
+    }
+
+    .form-input,
+    .form-select {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .form-submit {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .password-requirements {
+        font-size: 12px;
+    }
+
+    .password-strength {
+        font-size: 12px;
+    }
+}

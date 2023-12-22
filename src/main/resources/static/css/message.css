@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #007bff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.navbar-list {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-item {
+    margin-right: 10px;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 24px;
+}
+
+.navbar-link.active {
+    background-color: #fff;
+    color: #007bff;
+}
+
+.logout-button {
+    padding: 5px 10px;
+    font-size: 24px;
+    background-color: #0056b3;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.logout-button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logout-button:hover a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.message-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin-right: 20px;
+}
+
+.message-box h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.message-box label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.message-box input,
+.message-box textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.message-box .button-group {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message-box button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.message-box .send-button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.message-box .cancel-button {
+    background-color: #ccc;
+    color: #333;
+}
+
+.message-box button:hover {
+    opacity: 0.8;
+}
+
+.message-list {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    overflow-y: auto;
+}
+
+.message-list h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.message-list ul {
+    padding: 0;
+}
+
+.message-list li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.message-sender {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.message-content {
+    font-size: 14px;
+}

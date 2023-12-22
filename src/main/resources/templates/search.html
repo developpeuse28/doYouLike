@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Search</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/search.css">
+</head>
+<body>
+<nav class="navbar">
+  <ul class="navbar-list">
+    <li class="navbar-item"><a href="/main" class="navbar-link">🏠</a></li>
+    <li class="navbar-item"><a href="/search" class="navbar-link active">🔍 Search</a></li>
+    <li class="navbar-item"><a href="/profile" class="navbar-link">👤 Profile</a></li>
+    <li class="navbar-item"><a href="/message" class="navbar-link">📬 Message</a></li>
+  </ul>
+  <button class="logout-button"><a href="/member/logout">Logout</a></button>
+</nav>
+<div class="search-container">
+  <h2>Set Preferences</h2>
+  <form class="preferences-form" id="preferencesForm">
+    <div class="input-group">
+      <div class="input-group-item">
+        <label for="ageRangeMin">Age: Minimum:</label>
+        <input type="number" id="ageRangeMin" name="ageRangeMin" min="18" max="50" value="18">
+      </div>
+      <div class="input-group-item">
+        <label for="ageRangeMax">Maximum:</label>
+        <input type="number" id="ageRangeMax" name="ageRangeMax" min="18" max="50" value="50">
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="input-group-item">
+        <label for="dormDepartment">Dorm Department:</label>
+        <select id="dormDepartment" name="dormDepartment">
+          <option value="">All</option>
+          <option value="A">Dorm A (Girls)</option>
+          <option value="B">Dorm B (Girls)</option>
+          <option value="C">Dorm C (Boys)</option>
+          <option value="D">Dorm D (Boys)</option>
+        </select>
+      </div>
+      <div class="input-group-item">
+        <label for="roomType">Type of Room:</label>
+        <select id="roomType" name="roomType">
+          <option value="">All</option>
+          <option value="DOUBLE">Double Room</option>
+          <option value="TRIPLE">Triple Room</option>
+          <option value="QUADRUPLE">Quadruple Room</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-group-item">
+        <label for="lifestyle1">Lifestyle:</label>
+      </div>
+      <div class="input-group-item">
+        <select id="lifestyle1" name="lifestyle1">
+          <option value="">All</option>
+          <option value="LIFESTYLE1_EARLY_BIRD">Early Bird</option>
+          <option value="LIFESTYLE1_NIGHT_OWL">Night Owl</option>
+        </select>
+      </div>
+      <div class="input-group-item">
+        <label for="lifestyle2"></label>
+        <select id="lifestyle2" name="lifestyle2">
+          <option value="">All</option>
+          <option value="LIFESTYLE2_ACTIVE">Active</option>
+          <option value="LIFESTYLE2_FREQUENTLY_ABSENT">Frequently Absent</option>
+          <option value="LIFESTYLE2_MOSTLY_ABSENT">Mostly Absent</option>
+        </select>
+      </div>
+      <div class="input-group-item">
+        <label for="lifestyle3"></label>
+        <select id="lifestyle3" name="lifestyle3">
+          <option value="">All</option>
+          <option value="LIFESTYLE3_SMOKE">Smoke</option>
+          <option value="LIFESTYLE3_DONT_SMOKE">Don't Smoke</option>
+        </select>
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="input-group-item">
+        <label for="sleepHabit1">Sleep Habit:</label>
+      </div>
+      <div class="input-group-item">
+        <label>
+          <input type="checkbox" id="sleepHabit1" name="sleepHabit1" value="SLEEP_HABIT1_DONT_SNORE">
+          Don't Snore
+        </label>
+      </div>
+      <div class="input-group-item">
+        <label>
+          <label for="sleepHabit2"></label>
+          <input type="checkbox" id="sleepHabit2" name="sleepHabit2" value="SLEEP_HABIT2_DONT_GRIND_TEETH">
+          Don't Grind Teeth
+        </label>
+      </div>
+      <div class="input-group-item">
+        <label>
+          <label for="sleepHabit3"></label>
+          <input type="checkbox" id="sleepHabit3" name="sleepHabit3" value="SLEEP_HABIT3_DONT_SLEEP_TALK_OR_SLEEPWALK">
+          Don't Sleep Talk or Sleep Walk
+        </label>
+      </div>
+    </div>
+
+    <div class="search-button">
+      <button type="submit" id="searchButton">Search</button>
+    </div>
+  </form>
+
+  <div class="results">
+    <h2>Search Results</h2>
+    <ul class="member-list">
+      <li th:each="member : ${memberList}">
+        <div class="member-item">
+          <a th:href="@{/member/{id}(id=${member.memberId})}" class="member-link">
+            <div class="member-info">
+              <h3>
+                <span th:text="${member.status}"></span>
+                <span th:text="${member.name}"></span>
+              </h3>
+              <p th:text="${member.specialNote}"></p>
+            </div>
+          </a>
+          <input type="hidden" class="data-birth-year" th:value="${member.birthYear}">
+          <input type="hidden" class="data-dorm-department" th:value="${member.dormDepartment}">
+          <input type="hidden" class="data-room-type" th:value="${member.roomType}">
+          <input type="hidden" class="data-lifestyle1" th:value="${member.lifestyle1}">
+          <input type="hidden" class="data-lifestyle2" th:value="${member.lifestyle2}">
+          <input type="hidden" class="data-lifestyle3" th:value="${member.lifestyle3}">
+          <input type="hidden" class="data-sleep-habit1" th:value="${member.sleepHabit1}">
+          <input type="hidden" class="data-sleep-habit2" th:value="${member.sleepHabit2}">
+          <input type="hidden" class="data-sleep-habit3" th:value="${member.sleepHabit3}">
+        </div>
+      </li>
+    </ul>
+    <div class="pagination">
+      <button id="prevPageButton" class="pagination-button">&lt;</button>
+      <button id="nextPageButton" class="pagination-button">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/js/script.js"></script>
+</body>
+</html>

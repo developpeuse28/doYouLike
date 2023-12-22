@@ -1,0 +1,459 @@
+:root {
+    /*Colors*/
+    --AlmostWhite: hsl(0, 0%, 98%);
+    --AlmostBlack: hsl(0, 0%, 8%);
+    --Blue: hsl(154, 71%, 47%);
+    --Dusk: hsl(120, 20%, 54%);
+    --Dawn: hsl(77, 36%, 49%);
+
+    --MediumGray: hsl(0, 0%, 41%);
+    --Mint: hsl(135, 100%, 74%);
+    --Purple:hsl(145, 38%, 67%);
+    --Red: hsl(4, 100%, 67%);
+
+
+}
+
+/* id가 #이고, class가 .이다! */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100vh;
+    /* background-color: var(--MediumGray); 이거는 보류*/
+}
+
+/*.logo {
+    width: 4rem;
+    height: 4rem;
+}*/
+
+a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit; /* 부모 요소의 색상을 상속하여 사용합니다. */
+    cursor: pointer;
+}
+
+#appbar {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 아이콘과 버튼 사이 공간 유지 */
+    background-color: var(--Dusk);
+    color: var(--AlmostWhite);
+    z-index: 2000;
+    width: 100%;
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.75);
+}
+
+
+
+#main {
+    margin-top: 4rem;
+    width: 100vw;
+}
+
+/*SideNav*/
+.sidenav {
+    position: fixed;
+    background-color: var(--Dusk);
+    color: var(--AlmostWhite);
+    /* margin-top: 4rem; */
+    height: 100vh;
+    width: 20rem;
+    overflow: hidden;
+    z-index: 2000;
+    /* transition: width 0.5s; */
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.75) inset;
+}
+
+.colapse {
+    width: 4rem !important;
+    transition: width 0.5s;
+}
+
+.navlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.active {
+    background-color: var(--Dawn);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: var(--AlmostWhite);
+    transition: 0.5s;
+    width: 100%;
+}
+
+.nav-item a:hover {
+    background-color: var(--Purple);
+}
+
+.label {
+    white-space:nowrap;
+    opacity: 1;
+    margin: 0rem 1rem;
+    transition: 0.5s
+}
+
+.colapse .label{
+    opacity: 0;
+    transition: 0.5s
+}
+
+/*Helper Classes*/
+.border-none {
+    border: none !important;
+}
+
+.focus-none {
+    box-shadow: none !important
+}
+
+/*Media Queries*/
+@media screen and (max-width: 600px) {
+    .sidenav {
+        width: 100%;
+    }
+}
+
+/*///////////////Navbar Toggler/////////////////////////////////////////////*/
+/*Button Details*/
+.navbar-toggler {
+    background-color: transparent;
+    border: .08em solid var(--AlmostBlack);
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    /*Center icon*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*Use to center icon*/
+
+    /*padding: .15rem;*/
+
+    /*Button Size*/
+    height: 3rem;
+    width: 3rem;
+
+    z-index: 9999;
+}
+
+.navbar-toggler:focus {
+    /*h-offset, v-offset, blur, spread, color*/
+    box-shadow: 0rem 0rem .2rem .2rem;
+}
+
+/*Icon Details*/
+.navbar-toggler-icon,
+.navbar-toggler-icon:before,
+.navbar-toggler-icon:after {
+    /*Default Color*/
+    background-color: var(--AlmostBlack);
+    border-radius: 0.5rem;
+    display: block;
+
+    /*Icon Size*/
+    width: 2em;
+    height: 0.15em;
+
+    /*Animation Transition*/
+    transition: 0.5s;
+    position: absolute;
+}
+
+/*Position relative to the main bar*/
+.navbar-toggler-icon:before,
+.navbar-toggler-icon:after {
+    content: "";
+    position: absolute;
+}
+
+/*Top*/
+.navbar-toggler-icon:before {
+    bottom: 0.7rem;
+}
+
+/*Bottom*/
+.navbar-toggler-icon:after {
+    top: 0.7rem;
+}
+
+/*////////////Color Options/////////////*/
+/*Default is dark*/
+
+/*Light*/
+.icon-light .navbar-toggler-icon,
+.icon-light .navbar-toggler-icon:before,
+.icon-light .navbar-toggler-icon:after {
+    background-color: var(--AlmostWhite);
+}
+
+.icon-light {
+    border-color: var(--AlmostWhite) !important;
+    color: var(--AlmostWhite) !important;
+}
+
+/*/////////Animations///////////////*/
+/*Added in JS to the control*/
+/*Regular animation*/
+.normal-toggle .navbar-toggler-icon {
+    background-color: transparent;
+}
+
+.normal-toggle .navbar-toggler-icon:before {
+    bottom: 0;
+    transform:rotate(-135deg);
+}
+
+.normal-toggle .navbar-toggler-icon:after {
+    top: 0;
+    transform:rotate(135deg);
+}
+
+#dropdown-menu {
+    /* 기존 스타일 유지 */
+    position: absolute;
+    right: 0;
+    top: 100%; /* 드롭다운 메뉴가 상단 바 아래로 위치하도록 설정 */
+    /* 추가 스타일 */
+}
+
+/* ========================버튼========================================== */
+.btntxt {
+    width: 100%;
+    height: 5rem;
+    background-color:linen;
+    margin-top: 50px;
+
+}
+
+.btnmsg {
+    display: inline-block; /* a 태그를 블록 레벨 요소로 변환 */
+    width: 100%;
+    height: 5rem;
+    background-color:rgb(177, 206, 188);
+    margin-top: 50px;
+}
+
+.in2a {
+    width: 70%;
+    align-items: center;
+}
+
+/* 바 상단 로고이미지 */
+
+.image-with-text2 {
+    position: relative; /* 상대 위치 지정 */
+}
+
+.green2 {
+    position: absolute; /* 절대 위치 지정 */
+    bottom: 0; /* 아래쪽에 위치 */
+    left: 50%; /* 가운데 정렬 */
+    transform: translateX(-50%); /* 가운데 정렬 조정 */
+
+    color: white; /* 글자색 */
+    padding: 5px 10px; /* 내부 간격 */
+
+    font-size: 5px;
+    font-weight: bold; /* 볼드체 설정 */
+    font-family: 'Comic Neue', cursive; /* 'Amatic SC' 폰트를 적용 */
+}
+
+/* 회색박스 스타일링 */
+.gray-box {
+    width: 100%;
+    display: inline-block; /* 인라인 블록으로 배치 */
+    padding: 20px;
+    background-color: #f2f2f2; /* 회색 배경색 */
+    color: #333; /* 텍스트 색상 */
+    border-radius: 10px; /* 둥근 모서리 설정 */
+
+}
+/* 위쪽 글씨 스타일링 */
+.top-text {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px; /* 위쪽과 아래쪽 글씨 사이의 간격 설정 */
+}
+/* 아래쪽 글씨 스타일링 */
+.bottom-text {
+    font-size: 12px;
+}
+
+
+/* 투명한 박스 스타일링 */
+.toggle-container {
+    background-color: rgba(255, 255, 255, 0.5); /* 투명도를 조절하는 rgba 색상 사용 */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px; /* 위쪽 간격 */
+    margin-bottom: 5px; /* 아래쪽 간격 */
+}
+
+/* 토글 버튼 스타일링 */
+.form-check-input[type="checkbox"] {
+    transform: scale(1.5); /* 토글 버튼 크기를 1.5배로 늘립니다. */
+    margin-right: 20px; /* 토글 버튼과 글씨 사이의 오른쪽 간격을 늘립니다. */
+}
+
+.custom-select {
+    width: 100%;
+    height: 38px;
+    padding: 6px 12px;
+    font-size: 14px;
+    margin-top: 5px; /* 위쪽 간격 */
+    margin-bottom: 20px; /* 아래쪽 간격 */
+}
+
+
+/* 뒤로 가기 버튼 스타일링 */
+#backButton {
+
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+/* ============================================================ */
+/* 인풋 텍스트 박스 스타일링 */
+#diaryInput {
+    margin-top: 50px;
+    min-height: 200px; /* 최소 높이 설정 */
+    width: 100%;
+    resize: vertical; /* 세로 리사이징 활성화 */
+}
+
+/* 타이틀 스타일 */
+.page-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    padding: 20px;
+}
+
+.page-date {
+    text-align: right;
+}
+
+
+/* 표 스타일링 */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+    border-spacing: 100px; /* 셀 사이의 간격*/
+}
+
+th, td {
+    border: 1px solid #dddddd; /* 셀 경계선 스타일 */
+    padding: 15px; /* 텍스트 위 아래 간격 */
+    text-align: center; /* 셀 텍스트 가운데 정렬 */
+}
+
+th {
+    background-color: #f2f2f2; /* 헤더 배경색 지정 */
+}
+
+/* 짝수 행 배경색 지정 */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* 마우스 호버시 셀 배경색 지정 */
+tr:hover td {
+    background-color: #eaeaea;
+}
+
+
+/* ============================================= */
+/* 부모 컨테이너 */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 프로필 사진 */
+/*.profile-picture {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}*/
+
+/* 닉네임 레이블 */
+.profile-label {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 추가 정보 */
+.additional-info {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #666;
+}
+
+#memberId {
+    width: 100%;
+}
+
+#password {
+    width: 100%;
+}
+
+#diaryTitle {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#diaryDate{
+    width: 100%;
+}
+
+.logoutbtn-txtsize {
+    width: 150px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+}
+
+.user3-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 50px;
+
+}

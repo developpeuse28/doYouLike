@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+<nav class="navbar">
+  <ul class="navbar-list">
+    <li class="navbar-item"><a href="/main" class="navbar-link">🏠</a></li>
+    <li class="navbar-item"><a href="/search" class="navbar-link">🔍 Search</a></li>
+    <li class="navbar-item"><a href="/profile" class="navbar-link active">👤 Profile</a></li>
+    <li class="navbar-item"><a href="/message" class="navbar-link">📬 Message</a></li>
+  </ul>
+  <button class="logout-button"><a href="/member/logout">Logout</a></button>
+</nav>
+<div class="profile-info">
+  <div class="profile-emoji-dropdown">
+    <div class="profile-emoji" contenteditable="true" th:text="${updateMember.status ?: '&#128512;'}">&#128512;</div> <br>
+    <div class="emoji-dropdown-content" id="status">
+      <div class="emoji-row">
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128512;')">&#128512;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128513;')">&#128513;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128514;')">&#128514;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128515;')">&#128515;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128516;')">&#128516;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128517;')">&#128517;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128518;')">&#128518;</div>
+      </div>
+      <div class="emoji-row">
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128519;')">&#128519;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128520;')">&#128520;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128521;')">&#128521;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128522;')">&#128522;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128523;')">&#128523;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128524;')">&#128524;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128525;')">&#128525;</div>
+      </div>
+      <div class="emoji-row">
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128526;')">&#128526;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128527;')">&#128527;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128528;')">&#128528;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128529;')">&#128529;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128530;')">&#128530;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128531;')">&#128531;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128532;')">&#128532;</div>
+      </div>
+      <div class="emoji-row">
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128533;')">&#128533;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128534;')">&#128534;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128535;')">&#128535;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128536;')">&#128536;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128537;')">&#128537;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128538;')">&#128538;</div>
+        <div class="emoji emoji-option" onclick="selectEmoji('&#128539;')">&#128539;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-actions">
+    <span class="profile-menu">&#8942;</span>
+    <div class="dropdown-content">
+      <a href="#" onclick="openPopup('change-password-popup')">Change Password</a>
+      <a href="#" onclick="openPopup('delete-account-popup')">Delete Account</a>
+    </div>
+
+    <div class="popup" id="change-password-popup">
+      <h3>Change Password</h3> <br>
+      <form th:action="@{/update-password}" method="post" id="change-password-form">
+        <p>At least 8 characters; a combination of letters, numbers, and symbols</p> <br>
+        <input type="password" name="currentPassword" id="currentPassword" placeholder="Current Password">
+        <input type="password" name="newPassword" id="newPassword" placeholder="New Password">
+        <button type="submit">Save</button>
+        <button type="button" onclick="closePopup('change-password-popup')">Close</button>
+      </form>
+    </div>
+
+    <div class="popup" id="delete-account-popup">
+      <h3>Delete Account</h3> <br>
+      <p>Are you sure you want to delete your account?</p> <br>
+      <button onclick="confirmDelete()">Yes</button>
+      <button onclick="closePopup('delete-account-popup')">Close</button>
+    </div>
+
+    <script th:inline="javascript">
+      const memberId = /*[[${updateMember.memberId}]]*/ null;
+    </script>
+
+    <div class="overlay" id="overlay"></div>
+  </div>
+
+  <p><strong>Name: <td th:text="${updateMember.name}"></td></strong> </p>
+  <p><strong>ID: <td th:text="${updateMember.memberId}"></td></strong> </p>
+  <p><strong>Age: <td th:text="${currentYear - updateMember.birthYear + 1}"></td></strong></p>
+  <p><strong>Gender: <td th:text="${#strings.capitalize(updateMember.gender.toLowerCase())}"></td></strong></p>
+  <p><strong>Major:
+    <td th:text="${#strings.capitalize(#strings.replace(updateMember.major, '_', ' ').toLowerCase())}"></td>
+  </strong></p>
+  <br>
+
+  <form action="/profile" method="post">
+
+    <input type="hidden" name="status" th:value="${updateMember.status ?: '&#128512;'}" />
+
+    <label for="dormDepartment">Desired Dormitory Department:</label>
+    <select name="dormDepartment" id="dormDepartment">
+      <option value="A" th:selected="${updateMember.dormDepartment != null && updateMember.dormDepartment == 'A'}">Dorm A (Girls)</option>
+      <option value="B" th:selected="${updateMember.dormDepartment != null && updateMember.dormDepartment == 'B'}">Dorm B (Girls)</option>
+      <option value="C" th:selected="${updateMember.dormDepartment != null && updateMember.dormDepartment == 'C'}">Dorm C (Boys)</option>
+      <option value="D" th:selected="${updateMember.dormDepartment != null && updateMember.dormDepartment == 'D'}">Dorm D (Boys)</option>
+    </select><br>
+
+    <label for="roomType">Desired Type of Room:</label>
+    <select name="roomType" id="roomType">
+      <option value="DOUBLE" th:selected="${updateMember.roomType != null && updateMember.roomType == 'DOUBLE'}">Double Room</option>
+      <option value="TRIPLE" th:selected="${updateMember.roomType != null && updateMember.roomType == 'TRIPLE'}">Triple Room</option>
+      <option value="QUADRUPLE" th:selected="${updateMember.roomType != null && updateMember.roomType == 'QUADRUPLE'}">Quadruple Room</option>
+    </select><br>
+
+    <label>Lifestyle:</label>
+    <select name="lifestyle1" id="lifestyle1">
+      <option value="LIFESTYLE1_EARLY_BIRD" th:selected="${updateMember.lifestyle1 != null && updateMember.lifestyle1 == 'LIFESTYLE1_EARLY_BIRD'}">Early Bird</option>
+      <option value="LIFESTYLE1_NIGHT_OWL" th:selected="${updateMember.lifestyle1 != null && updateMember.lifestyle1 == 'LIFESTYLE1_NIGHT_OWL'}">Night Owl</option>
+    </select><br>
+
+    <select name="lifestyle2" id="lifestyle2">
+      <option value="LIFESTYLE2_ACTIVE" th:selected="${updateMember.lifestyle2 != null && updateMember.lifestyle2 == 'LIFESTYLE2_ACTIVE'}">Active</option>
+      <option value="LIFESTYLE2_FREQUENTLY_ABSENT" th:selected="${updateMember.lifestyle2 != null && updateMember.lifestyle2 == 'LIFESTYLE2_FREQUENTLY_ABSENT'}">Frequently Absent</option>
+      <option value="LIFESTYLE2_MOSTLY_ABSENT" th:selected="${updateMember.lifestyle2 != null && updateMember.lifestyle2 == 'LIFESTYLE2_MOSTLY_ABSENT'}">Mostly Absent</option>
+    </select><br>
+
+    <select name="lifestyle3" id="lifestyle3">
+      <option value="LIFESTYLE3_SMOKE" th:selected="${updateMember.lifestyle3 != null && updateMember.lifestyle3 == 'LIFESTYLE3_SMOKE'}">Smoke</option>
+      <option value="LIFESTYLE3_DONT_SMOKE" th:selected="${updateMember.lifestyle3 != null && updateMember.lifestyle3 == 'LIFESTYLE3_DONT_SMOKE'}">Don't Smoke</option>
+    </select><br>
+
+    <label>Sleep Habit:</label>
+    <input type="checkbox" th:checked="${updateMember.sleepHabit1 == 'SLEEP_HABIT1_DONT_SNORE'}" name="sleepHabit1" value="SLEEP_HABIT1_DONT_SNORE">I don't snore<br>
+    <input type="checkbox" th:checked="${updateMember.sleepHabit2 == 'SLEEP_HABIT2_DONT_GRIND_TEETH'}" name="sleepHabit2" value="SLEEP_HABIT2_DONT_GRIND_TEETH">I don't grind my teeth<br>
+    <input type="checkbox" th:checked="${updateMember.sleepHabit3 == 'SLEEP_HABIT3_DONT_SLEEP_TALK_OR_SLEEPWALK'}" name="sleepHabit3" value="SLEEP_HABIT3_DONT_SLEEP_TALK_OR_SLEEPWALK">I don't sleep talk or sleepwalk<br><br>
+
+    <label for="specialNote">Bio/Special Note:</label>
+    <textarea name="specialNote" id="specialNote" rows="4" cols="50" th:text="${updateMember.specialNote ?: ''}"></textarea><br>
+
+    <input type="submit" value="Save">
+  </form>
+</div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

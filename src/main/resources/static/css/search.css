@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.active {
+    background-color: #fff;
+    color: #007bff;
+}
+
+.navbar {
+    background-color: #007bff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.navbar-list {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-link.active {
+    background-color: #fff;
+    color: #007bff;
+}
+
+.navbar-item {
+    margin-right: 10px;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 24px;
+}
+
+.logout-button {
+    padding: 5px 10px;
+    font-size: 24px;
+    background-color: #0056b3;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.logout-button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logout-button:hover a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.search-container {
+    max-width: 800px;
+    margin: 120px auto 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.preferences-form {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+}
+
+.preferences-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.preferences-form label {
+    font-weight: bold;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-group-item {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.input-group-item label {
+    margin-right: 5px;
+}
+
+.input-group-item input[type="number"],
+.input-group-item select,
+.input-group-item input[type="checkbox"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    width: auto;
+}
+
+.search-button {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.results {
+    margin-top: 20px;
+}
+
+.member-list {
+    list-style: none;
+    padding: 0;
+}
+
+.member-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.member-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.member-info h3 {
+    margin: 0;
+}
+
+.member-info p {
+    margin: 5px 0;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.pagination-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}

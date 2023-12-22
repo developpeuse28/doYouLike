@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Message</title>
+  <link rel="stylesheet" href="/css/message.css">
+</head>
+<body>
+<nav class="navbar">
+  <ul class="navbar-list">
+    <li class="navbar-item"><a href="/main" class="navbar-link">🏠</a></li>
+    <li class="navbar-item"><a href="/search" class="navbar-link">🔍 Search</a></li>
+    <li class="navbar-item"><a href="/profile" class="navbar-link">👤 Profile</a></li>
+    <li class="navbar-item"><a href="/message" class="navbar-link active">📬 Message</a></li>
+  </ul>
+  <button class="logout-button"><a href="/member/logout">Logout</a></button>
+</nav>
+<div class="message-container">
+  <div class="message-box">
+    <h2>Send a Message</h2>
+    <form id="message-form">
+      <label for="receiver">Receiver ID:</label>
+      <input type="text" id="receiver" name="receiver" required>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      <div class="button-group">
+        <button type="submit" class="send-button">Send</button>
+      </div>
+    </form>
+  </div>
+  <div class="message-list">
+    <h2>Message List</h2>
+    <ul>
+      <li>
+        <div class="message-sender">John Doe</div>
+        <div class="message-content">Hello, how are you?</div>
+      </li>
+      <li>
+        <div class="message-sender">Jane Smith</div>
+        <div class="message-content">I'm good, thank you!</div>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

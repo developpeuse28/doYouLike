@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+<div class="container">
+  <div class="title-box">
+    <h1 class="title">DoYouLike</h1>
+    <h2 class="subtitle">Roommate Matching</h2>
+  </div>
+
+  <div class="form-box">
+    <form action="/member/login" method="post" onsubmit="return validateForm();" class="login-form">
+      <label for="memberId" class="form-label">ID:</label>
+      <input type="text" id="memberId" name="memberId" placeholder="Please enter your ID" required> <br>
+
+      <label for="password" class="form-label">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Please enter your password" required> <br>
+
+      <input type="submit" value="Login" class="submit-btn">
+    </form>
+    <p class="signup-link">Don't have an account? <a href="/member/signup" class="signup-btn">Sign Up</a></p>
+
+    <div id="login-error-message" th:if="${not #strings.isEmpty(loginError)}">
+      <p th:text="${loginError}"></p>
+    </div>
+
+  </div>
+</div>
+<script src="/js/script.js"></script>
+</body>
+</html>
